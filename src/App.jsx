@@ -1,11 +1,51 @@
-import { useState } from 'react'
+import { useState } from "react";
+import * as API from "./servicios/data";
 
 export function App() {
-  const [count, setCount] = useState(0)
+  const [Usuario, setUsuario] = useState({ usuario: "", password: "" });
+
+  async function ClickIniciar(e) {
+    debugger
+    e.preventDefault();
+    const response = await API.login(Usuario.usuario, Usuario.password);
+    console.log(response);
+    if (response.length != 0) {
+      alert("Login correcto");
+      // sessionStorage.setItem("usuario", response);
+      // navigate("/dashboard");
+    } else {
+      alert("Login incorrecto");
+      // Swal.fire("Error", "Error al realizar el login", "error");
+    }
+  }
 
   return (
     <>
-    <div>prueba</div>
+      <h1>Iniciar sesión</h1>
+
+      <div style={{ padding: "20px" }}>
+        <form id="formulario" onSubmit={ClickIniciar}>
+          <label htmlFor="usuario">Usuario</label>
+          <input
+            required
+            type="text"
+            id="usuario"
+            onChange={(e) =>
+              setUsuario({ ...Usuario, usuario: e.target.value })
+            }
+          />
+          <label htmlFor="pass">Password</label>
+          <input
+            required
+            type="password"
+            id="pass"
+            onChange={(e) =>
+              setUsuario({ ...Usuario, password: e.target.value })
+            }
+          />
+          <input type="submit" id="enviar" value="Enviar" />
+        </form>
+      </div>
     </>
-  )
+  );
 }

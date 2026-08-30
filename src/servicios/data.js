@@ -1,15 +1,20 @@
 const URL = "https://localhost:7154/api/";
 
 export function login(usuario, pass) {
+  debugger;
   let datos = { usuario: usuario, pass: pass };
-  return fetch(URL + "autenticacion", {
+  return fetch(URL + `autenticacion/${usuario}/${pass}`, {
     method: "POST",
-    body: JSON.stringify(datos),
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((data) => data.text())
-//   .response.text().then(data => {       console.log(text);     });
+  }).then((data) => data.text());
+  // .then((response) =>
+  //   response.text().then((data) => {
+  //     debugger
+  //     console.log(data);
+  //   }),
+  // );
 }
 
 export function getStudents(usuario) {

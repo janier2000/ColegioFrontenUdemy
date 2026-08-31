@@ -11,7 +11,7 @@ export function Login() {
     const response = await API.login(Usuario.usuario, Usuario.password);
     console.log(response);
     if (response.length != 0) {
-      // sessionStorage.setItem("usuario", response);
+       sessionStorage.setItem("usuario", response);
        navigate("/dashboard");
     } else {
       alert("Login incorrecto");

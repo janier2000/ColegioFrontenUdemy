@@ -1,11 +1,11 @@
 import { Header } from "./Header";
-import { ListaEstudiante } from "./ListaEstudiante";
+import { ListarEstudiante } from "./ListarEstudiante";
 
 export function Dashboard() {
   return (
     <>
       <Header />
-      <ListaEstudiante />
+      <ListarEstudiante />
     </>
   );
 }

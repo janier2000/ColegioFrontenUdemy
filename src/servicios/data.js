@@ -16,7 +16,7 @@ export function login(usuario, pass) {
   // );
 }
 
-export function getStudents(usuario) {
+export function ObtenerLstEstudiantes(usuario) {
   return fetch(URL + "alumnosProfesor?usuario=" + usuario, {
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export function getStudents(usuario) {
   }).then((data) => data.json());
 }
 
-export function getStudentDetails(id) {
+export function ObtenerDetalleEstudiante(id) {
   return fetch(URL + "Alumno?id=" + id, {
     headers: {
       "Content-Type": "application/json",

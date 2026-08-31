@@ -1,6 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as API from "../servicios/data";
-import { useEffect } from "react";
+import {
+  Box,
+  TableScrollArea,
+  TableRoot,
+  TableHeader,
+  TableRow,
+  TableColumnHeader,
+  TableBody,
+  TableCell,
+} from "@chakra-ui/react";
+import { FaTrash } from "react-icons/fa";
 
 export function ListarEstudiante() {
   const [LstEstudiantes, setLstEstudiantes] = useState([]);
@@ -9,48 +19,63 @@ export function ListarEstudiante() {
     API.ObtenerLstEstudiantes(usuario).then(setLstEstudiantes);
   }, [usuario]);
 
+  function EliminarEstudiante(id) {
+    API.deleteStudent(id).then((result) => {
+      if (result == "true") {
+        Swal.fire(
+          "Estudiante eliminado",
+          "Has eliminado el alumno de forma satisfactoria",
+          "success",
+        );
+      } else {
+        Swal.fire("Error", "No se ha podido eliminar el alumno", "error");
+      }
+    });
+  }
+
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>DNI</th>
-            <th>Nombre</th>
-            <th>Dirección</th>
-            <th>Edad</th>
-            <th>Email</th>
-            <th>Asignatura</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {LstEstudiantes?.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.dni}</td>
-              <td>{item.nombre}</td>
-              <td>{item.direccion}</td>
-              <td>{item.edad}</td>
-              <td>{item.email}</td>
-              <td>{item.asignatura}</td>
-              {/* <td>
-                <Link to={"/student/" + item.id}>
-                  <FaEdit />
-                </Link>
-              </td>
-              <td>
-                <Link to={"/student/califications/" + item.matricula}>
-                  <FaStickyNote />
-                </Link>
-              </td> 
-               <td><FaTrash onClick={() => deleteStudent(item.id)} cursor='pointer' /></td> */}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Box m="50px">
+        <TableScrollArea>
+          <TableRoot size="md" variant="striped" colorScheme="gray">
+            <TableHeader>
+              <TableRow>
+                <TableColumnHeader>ID</TableColumnHeader>
+                <TableColumnHeader>DNI</TableColumnHeader>
+                <TableColumnHeader>Nombre</TableColumnHeader>
+                <TableColumnHeader>Dirección</TableColumnHeader>
+                <TableColumnHeader>Edad</TableColumnHeader>
+                <TableColumnHeader>Email</TableColumnHeader>
+                <TableColumnHeader>Asignatura</TableColumnHeader>
+                <TableColumnHeader></TableColumnHeader>
+                <TableColumnHeader></TableColumnHeader>
+                <TableColumnHeader></TableColumnHeader>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {LstEstudiantes?.map((student) => (
+                <TableRow key={student.id}>
+                  <TableCell>{student.id}</TableCell>
+                  <TableCell>{student.dni}</TableCell>
+                  <TableCell>{student.nombre}</TableCell>
+                  <TableCell>{student.direccion}</TableCell>
+                  <TableCell>{student.edad}</TableCell>
+                  <TableCell>{student.email}</TableCell>
+                  <TableCell>{student.asignatura}</TableCell>
+                  {/* <TableCell><Link to={'/student/'+student.id}><FaEdit /></Link></TableCell>
+                                    <TableCell><Link to={'/student/califications/'+student.matricula}><FaStickyNote /></Link></TableCell> */}
+                  <TableCell>
+                    <FaTrash
+                      onClick={() => EliminarEstudiante(student.id)}
+                      cursor="pointer"
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </TableRoot>
+        </TableScrollArea>
+      </Box>
     </>
   );
 }

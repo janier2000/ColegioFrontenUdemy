@@ -1,7 +1,6 @@
 const URL = "https://localhost:7154/api/";
 
 export function login(usuario, pass) {
-  debugger;
   let datos = { usuario: usuario, pass: pass };
   return fetch(URL + `autenticacion/${usuario}/${pass}`, {
     method: "POST",

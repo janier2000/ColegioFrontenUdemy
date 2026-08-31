@@ -1,5 +1,14 @@
-import { useState, useEffect } from 'react';
-import {FormControl,FormLabel, Input, Center,Box,Heading,Select} from '@chakra-ui/react';
+import { useState } from "react";
+import {
+  FieldRoot,
+  FieldLabel,
+  Input,
+  Center,
+  Box,
+  Heading,
+  NativeSelectRoot,
+  NativeSelectField,
+} from "@chakra-ui/react";
 import { Header } from "./Header";
 
 export function NuevoEstudiante() {
@@ -12,6 +21,12 @@ export function NuevoEstudiante() {
     asignatura: "",
   });
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("Nuevo estudiante:", EstudianteENT);
+    // aquí iría la lógica para enviar los datos al servidor
+  }
+
   return (
     <>
       <Header />
@@ -22,8 +37,8 @@ export function NuevoEstudiante() {
           </Box>
           <Box p="20px">
             <form id="formulario" onSubmit={handleSubmit}>
-              <FormControl mt="3">
-                <FormLabel>DNI</FormLabel>
+              <FieldRoot mt="3">
+                <FieldLabel>DNI</FieldLabel>
                 <Input
                   type="text"
                   id="dni"
@@ -35,9 +50,9 @@ export function NuevoEstudiante() {
                     })
                   }
                 />
-              </FormControl>
-              <FormControl mt="3">
-                <FormLabel>Nombre</FormLabel>
+              </FieldRoot>
+              <FieldRoot mt="3">
+                <FieldLabel>Nombre</FieldLabel>
                 <Input
                   type="text"
                   id="nombre"
@@ -49,9 +64,9 @@ export function NuevoEstudiante() {
                     })
                   }
                 />
-              </FormControl>
-              <FormControl mt="3">
-                <FormLabel>Dirección</FormLabel>
+              </FieldRoot>
+              <FieldRoot mt="3">
+                <FieldLabel>Dirección</FieldLabel>
                 <Input
                   type="text"
                   id="direccion"
@@ -63,9 +78,9 @@ export function NuevoEstudiante() {
                     })
                   }
                 />
-              </FormControl>
-              <FormControl mt="3">
-                <FormLabel>Edad</FormLabel>
+              </FieldRoot>
+              <FieldRoot mt="3">
+                <FieldLabel>Edad</FieldLabel>
                 <Input
                   type="number"
                   id="edad"
@@ -77,9 +92,9 @@ export function NuevoEstudiante() {
                     })
                   }
                 />
-              </FormControl>
-              <FormControl mt="3">
-                <FormLabel>Email</FormLabel>
+              </FieldRoot>
+              <FieldRoot mt="3">
+                <FieldLabel>Email</FieldLabel>
                 <Input
                   type="text"
                   id="email"
@@ -91,26 +106,28 @@ export function NuevoEstudiante() {
                     })
                   }
                 />
-              </FormControl>
-              <FormControl mt="3">
-                <FormLabel>Asignatura</FormLabel>
+              </FieldRoot>
+              <FieldRoot mt="3">
+                <FieldLabel>Asignatura</FieldLabel>
                 {/*<Input type='text' id='asignatura' required onChange={event => setStudent({...student, asignatura:event.target.value})} />*/}
-                <Select
-                  id="asignatura"
-                  onChange={(event) =>
-                    setEstudianteENT({
-                      ...EstudianteENT,
-                      asignatura: event.target.value,
-                    })
-                  }
-                >
-                  <option value="1">Matemáticas</option>
-                  <option value="2">Informática</option>
-                  <option value="3">Inglés</option>
-                  <option value="4">Literatura</option>
-                </Select>
-              </FormControl>
-              <FormControl mt="3">
+                <NativeSelectRoot>
+                  <NativeSelectField
+                    id="asignatura"
+                    onChange={(event) =>
+                      setEstudianteENT({
+                        ...EstudianteENT,
+                        asignatura: event.target.value,
+                      })
+                    }
+                  >
+                    <option value="1">Matemáticas</option>
+                    <option value="2">Informática</option>
+                    <option value="3">Inglés</option>
+                    <option value="4">Literatura</option>
+                  </NativeSelectField>
+                </NativeSelectRoot>
+              </FieldRoot>
+              <FieldRoot mt="3">
                 <Input
                   type="submit"
                   mt="3"
@@ -118,7 +135,7 @@ export function NuevoEstudiante() {
                   borderColor="teal"
                   value="Nuevo"
                 />
-              </FormControl>
+              </FieldRoot>
             </form>
           </Box>
         </Box>

@@ -48,16 +48,16 @@ export function deleteStudent(id) {
   );
 }
 
-export function createStudent(student) {
+export function crearEstudiante(EstudianteENT) {
   let data = {
-    dni: student.dni,
-    nombre: student.nombre,
-    direccion: student.direccion,
-    edad: student.edad,
-    email: student.email,
+    dni: EstudianteENT.dni,
+    nombre: EstudianteENT.nombre,
+    direccion: EstudianteENT.direccion,
+    edad: EstudianteENT.edad,
+    email: EstudianteENT.email,
   };
   return (
-    fetch(URL + "Alumno?id_asig=" + student.asignatura, {
+    fetch(URL + "Alumno?id_asig=" + EstudianteENT.asignatura, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

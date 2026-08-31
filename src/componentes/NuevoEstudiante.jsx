@@ -10,6 +10,7 @@ import {
   NativeSelectField,
 } from "@chakra-ui/react";
 import { Header } from "./Header";
+import * as API from "../servicios/data";
 
 export function NuevoEstudiante() {
   const [EstudianteENT, setEstudianteENT] = useState({
@@ -22,9 +23,28 @@ export function NuevoEstudiante() {
   });
 
   function handleSubmit(event) {
+    debugger;
     event.preventDefault();
-    console.log("Nuevo estudiante:", EstudianteENT);
-    // aquí iría la lógica para enviar los datos al servidor
+      API.crearEstudiante(EstudianteENT).then(result => {
+            if (result=="true"){
+                // Swal.fire(
+                //     'Alumno creado',
+                //     'Se ha creado el alumno de forma satisfactoria',
+                //     'success'
+                //   )
+                alert("Alumno creado de forma satisfactoria");
+                document.getElementById("formulario").reset();
+            }
+            else{
+                // Swal.fire(
+                //     'Error',
+                //     'No se ha podido crear el alumno',
+                //     'error'
+                //   )
+                alert("No se ha podido crear el alumno");
+                document.getElementById("formulario").reset();
+            }
+        })
   }
 
   return (

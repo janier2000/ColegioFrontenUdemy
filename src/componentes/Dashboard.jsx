@@ -1,9 +1,11 @@
+import { Header } from "./Header";
+import { ListaEstudiante } from "./ListaEstudiante";
+
 export function Dashboard() {
- 
   return (
     <>
-     <h1>panel principal de la app</h1>
+      <Header />
+      <ListaEstudiante />
     </>
   );
-
 }

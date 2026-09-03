@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import * as API from "../servicios/data";
+import { Link } from "react-router-dom";
 import {
   Box,
   TableScrollArea,
@@ -10,7 +11,7 @@ import {
   TableBody,
   TableCell,
 } from "@chakra-ui/react";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaEdit } from "react-icons/fa";
 
 export function ListarEstudiante() {
   const [LstEstudiantes, setLstEstudiantes] = useState([]);
@@ -65,8 +66,11 @@ export function ListarEstudiante() {
                   <TableCell>{student.edad}</TableCell>
                   <TableCell>{student.email}</TableCell>
                   <TableCell>{student.asignatura}</TableCell>
-                  {/* <TableCell><Link to={'/student/'+student.id}><FaEdit /></Link></TableCell>
-                                    <TableCell><Link to={'/student/califications/'+student.matricula}><FaStickyNote /></Link></TableCell> */}
+                  <TableCell>
+                    <Link to={"/estudiante/" + student.id}>
+                      <FaEdit />
+                    </Link>
+                  </TableCell>
                   <TableCell>
                     <FaTrash
                       onClick={() => EliminarEstudiante(student.id)}

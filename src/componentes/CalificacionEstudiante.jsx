@@ -39,7 +39,8 @@ export function CalificacionEstudiante(id) {
       (total = total + calificacion.nota * (calificacion.porcentaje / 100)),
   );
 
-  function createCalificacion() {
+  function CrearCalificacion() {
+    debugger;
     let descrField = document.getElementById("descripcion");
     let notaField = document.getElementById("nota");
     let porcentField = document.getElementById("porcentaje");
@@ -53,11 +54,12 @@ export function CalificacionEstudiante(id) {
       API.CrearCalificacion(calificacion, params.matriculaId).then(
         (result) => {
           if (result == "true") {
-            Swal.fire(
-              "Calificación añadida",
-              "Has añadido una calificación de forma satisfactoria",
-              "success",
-            );
+            // Swal.fire(
+            //   "Calificación añadida",
+            //   "Has añadido una calificación de forma satisfactoria",
+            //   "success",
+            // );
+            alert("Calificación añadida correctamente");
             document.getElementById("descripcion").value = "";
             document.getElementById("nota").value = "";
             document.getElementById("porcentaje").value = "";
@@ -155,7 +157,7 @@ export function CalificacionEstudiante(id) {
                 <TableCell>
                   <FaCheck
                     cursor="pointer"
-                    onClick={() => createCalificacion()}
+                    onClick={() => CrearCalificacion()}
                   />
                 </TableCell>
               </TableRow>

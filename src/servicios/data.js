@@ -103,16 +103,16 @@ export function ObtenerCalificaciones(id) {
 }
 
 export function CrearCalificacion(calificacion, id) {
-  let data = {
-    descripcion: calificacion.descripcion,
-    nota: calificacion.nota,
-    porcentaje: calificacion.porcentaje,
-    matriculaId: id,
-  };
+  // let data = {
+  //   descripcion: calificacion.descripcion,
+  //   nota: calificacion.nota,
+  //   porcentaje: calificacion.porcentaje,
+  //   matriculaId: id,
+  // };
   return (
-    fetch(URL + "calificacion", {
+    fetch(URL +  `calificacion/${calificacion.descripcion}/${calificacion.nota}/${calificacion.porcentaje}/${id}`, {
       method: "POST",
-      body: JSON.stringify(data),
+      // body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
         //'Authorization': 'Bearer '+ token

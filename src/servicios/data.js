@@ -34,7 +34,7 @@ export function ObtenerDetalleEstudiante(id) {
   }).then((data) => data.json());
 }
 
-export function deleteStudent(id) {
+export function EliminarEstudiante(id) {
   return (
     fetch(URL + "Alumno?id=" + id, {
       method: "DELETE",
@@ -70,7 +70,7 @@ export function crearEstudiante(EstudianteENT) {
   );
 }
 
-export function editStudent(student) {
+export function EditarEstudiante(student) {
   let data = {
     id: student.id,
     dni: student.dni,
@@ -93,7 +93,7 @@ export function editStudent(student) {
   );
 }
 
-export function getCalificaciones(id) {
+export function ObtenerCalificaciones(id) {
   return fetch(URL + "calificaciones?idMatricula=" + id, {
     headers: {
       "Content-Type": "application/json",
@@ -102,7 +102,7 @@ export function getCalificaciones(id) {
   }).then((data) => data.json());
 }
 
-export function createCalificacion(calificacion, id) {
+export function CrearCalificacion(calificacion, id) {
   let data = {
     descripcion: calificacion.descripcion,
     nota: calificacion.nota,
@@ -123,7 +123,7 @@ export function createCalificacion(calificacion, id) {
   );
 }
 
-export function deleteCalificacion(id) {
+export function EliminarCalificacion(id) {
   return (
     fetch(URL + "Calificacion?id=" + id, {
       method: "DELETE",

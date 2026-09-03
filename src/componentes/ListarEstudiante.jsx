@@ -20,15 +20,18 @@ export function ListarEstudiante() {
   }, [usuario]);
 
   function EliminarEstudiante(id) {
-    API.deleteStudent(id).then((result) => {
+    debugger
+    API.EliminarEstudiante(id).then((result) => {
       if (result == "true") {
-        Swal.fire(
-          "Estudiante eliminado",
-          "Has eliminado el alumno de forma satisfactoria",
-          "success",
-        );
+          // Swal.fire(
+          //   "Estudiante eliminado",
+          //   "Has eliminado el alumno de forma satisfactoria",
+          //   "success",
+          // );
+        alert("Estudiante eliminado correctamente");  
       } else {
-        Swal.fire("Error", "No se ha podido eliminar el alumno", "error");
+        // Swal.fire("Error", "No se ha podido eliminar el alumno", "error");
+        alert("No se ha podido eliminar el alumno");
       }
     });
   }

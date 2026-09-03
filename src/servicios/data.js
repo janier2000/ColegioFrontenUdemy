@@ -48,7 +48,7 @@ export function EliminarEstudiante(id) {
   );
 }
 
-export function crearEstudiante(EstudianteENT) {
+export function CrearEstudiante(EstudianteENT) {
   let data = {
     dni: EstudianteENT.dni,
     nombre: EstudianteENT.nombre,

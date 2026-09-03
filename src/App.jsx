@@ -3,15 +3,23 @@ import { Login } from "./componentes/Login.jsx";
 import { Dashboard } from "./componentes/Dashboard.jsx";
 import { NuevoEstudiante } from "./componentes/NuevoEstudiante.jsx";
 import { EditarEstudiante } from "./componentes/EditarEstudiante.jsx";
+import { CalificacionEstudiante } from "./componentes/CalificacionEstudiante.jsx";
 
 export function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Login />} />
-           <Route path="/dashboard" element={<Dashboard />} />
-           <Route path="/Estudiante/Nuevo" element={<NuevoEstudiante />} />
-           <Route path="/estudiante/:IdEstudiante" element={<EditarEstudiante />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/Estudiante/Nuevo" element={<NuevoEstudiante />} />
+        <Route
+          path="/estudiante/:IdEstudiante"
+          element={<EditarEstudiante />}
+        />
+        <Route
+          path="/estudiante/calificacion/:matriculaId"
+          element={<CalificacionEstudiante />}
+        />
       </Routes>
     </>
   );

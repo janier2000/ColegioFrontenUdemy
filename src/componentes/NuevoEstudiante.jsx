@@ -25,7 +25,7 @@ export function NuevoEstudiante() {
   function handleSubmit(event) {
     debugger;
     event.preventDefault();
-      API.crearEstudiante(EstudianteENT).then(result => {
+      API.CrearEstudiante(EstudianteENT).then(result => {
             if (result=="true"){
                 // Swal.fire(
                 //     'Alumno creado',

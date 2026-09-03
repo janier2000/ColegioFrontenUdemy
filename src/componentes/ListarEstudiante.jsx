@@ -11,7 +11,7 @@ import {
   TableBody,
   TableCell,
 } from "@chakra-ui/react";
-import { FaTrash, FaEdit } from "react-icons/fa";
+import { FaTrash, FaEdit, FaStickyNote } from "react-icons/fa";
 
 export function ListarEstudiante() {
   const [LstEstudiantes, setLstEstudiantes] = useState([]);
@@ -21,15 +21,14 @@ export function ListarEstudiante() {
   }, [usuario]);
 
   function EliminarEstudiante(id) {
-    debugger
     API.EliminarEstudiante(id).then((result) => {
       if (result == "true") {
-          // Swal.fire(
-          //   "Estudiante eliminado",
-          //   "Has eliminado el alumno de forma satisfactoria",
-          //   "success",
-          // );
-        alert("Estudiante eliminado correctamente");  
+        // Swal.fire(
+        //   "Estudiante eliminado",
+        //   "Has eliminado el alumno de forma satisfactoria",
+        //   "success",
+        // );
+        alert("Estudiante eliminado correctamente");
       } else {
         // Swal.fire("Error", "No se ha podido eliminar el alumno", "error");
         alert("No se ha podido eliminar el alumno");
@@ -69,6 +68,13 @@ export function ListarEstudiante() {
                   <TableCell>
                     <Link to={"/estudiante/" + student.id}>
                       <FaEdit />
+                    </Link>
+                  </TableCell>
+                  <TableCell>
+                    <Link
+                      to={"/estudiante/calificacion/" + student.matriculaId}
+                    >
+                      <FaStickyNote />
                     </Link>
                   </TableCell>
                   <TableCell>
